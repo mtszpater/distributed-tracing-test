@@ -18,15 +18,13 @@ public class ExampleController {
     }
 
     @GetMapping
-    public String get() {
-        String onet = restTemplate.exchange("https://onet.pl/",
-                HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
-                }).getBody();
-        String interia = restTemplate.exchange("https://interia.pl/",
-                HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
-                }).getBody();
-
+    public String get() throws InterruptedException {
         log.info("Hi from second application");
-        return "hello";
+
+        return restTemplate.exchange("http://localhost:8080/asdasd",
+                HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
+                }).getBody();
     }
 }
+
+
